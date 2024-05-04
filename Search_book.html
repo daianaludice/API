@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API test</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <h1> test 사이트 </h1>
+        <p> </p>
+    <script>
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book",
+            data: { query:'미움받을 용기' },
+            headers: { Authorization: 'KakaoAK 62de370d0c3abe7770307630299bf4a8'}
+        })
+            .done(function (msg) {
+                $( "p" ).append( "<img src='"+msg.documents[0].thumbnail+"'/><br>" );
+                $( "p" ).append( "<strong>"+msg.documents[0].title+"</strong>" );
+            });
+            </script>
+</body>
+
+</html>
